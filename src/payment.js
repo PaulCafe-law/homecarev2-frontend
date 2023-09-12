@@ -30,7 +30,7 @@ const Payment = (handleCurrentPageChange) =>{
       };
     // 新增到appointments table的function
     const handleConfirmClick = () => {
-        axios.post('http://localhost:8080/create-appointment', data)
+        axios.post(process.env.REACT_APP_API_ADDRESS+'/create-appointment', data)
             .then(response => {
                 // 在這裡處理新增成功的情況
                 console.log('新增預約成功');
@@ -43,7 +43,7 @@ const Payment = (handleCurrentPageChange) =>{
     // 處理價格顯示
     const [price,setPrice] = useState('0');
     const fetchPrice = () =>{
-        axios.get(`http://localhost:8080/get-service-price/${professionalId}/${serviceName}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-service-price/${professionalId}/${serviceName}`)
         .then(response => {
             setPrice(response.data[0].base_price);
         })

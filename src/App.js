@@ -29,6 +29,7 @@ import Calendars from './calendar';
 import CalendarsMed from './calendar-med';
 import CalendarToScheduleMed from './calendartoschedule-med';
 import PersonalSetting from './personalsetting';
+
 const App = () => {
   // const [currentPage, setCurrentPage] = useState("schedule");
   // const handleCurrentPageChange = (currentPage) => {
@@ -63,6 +64,7 @@ const App = () => {
         <Route path="calendarsmed" element={<CalendarsMed />} />
         <Route path="calendartoschedulemed" element={<CalendarToScheduleMed />} />
         <Route path="personalsetting" element={<PersonalSetting />} />
+        
       </Routes>
     </div>
     

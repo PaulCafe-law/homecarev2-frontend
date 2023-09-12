@@ -21,7 +21,7 @@ const Chatroom = (handleCurrentPageChange) => {
     const [medUserId, setMedUserId] = useState('') //需要醫療人員的user_id
     useEffect(() => {
         // 使用 Axios 透過professional_id向後端取得user_id
-        axios.get(`http://localhost:8080/professional-backend-spec/${receiver_id}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/professional-backend-spec/${receiver_id}`)
             .then(response => {
             // 從回應中取得spec並設定到狀態中
             setMedUserId(response.data[0].user_id); 
@@ -36,7 +36,7 @@ const Chatroom = (handleCurrentPageChange) => {
     // const professional_id = sessionStorage.getItem('med_id'); 
     useEffect(() => {
         // 使用 Axios 透過professional_id向後端取得職業
-        axios.get(`http://localhost:8080/professional-backend-spec/${receiver_id}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/professional-backend-spec/${receiver_id}`)
             .then(response => {
             // 從回應中取得spec並設定到狀態中
             setMedName(response.data[0].full_name); 
@@ -114,7 +114,7 @@ const Chatroom = (handleCurrentPageChange) => {
     const [pastMessages, setPastMessages] = useState([]);
     console.log("medUserId:"+medUserId)
     useEffect(() => {
-        axios.get(`http://localhost:8080/get-messages/${sender_id}/${medUserId}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-messages/${sender_id}/${medUserId}`)
         .then((response) => {
             // 处理获取到的消息数据，例如将其存储在状态中以在界面上显示
             setPastMessages(response.data);
@@ -165,7 +165,7 @@ const Chatroom = (handleCurrentPageChange) => {
                         receiver_id: medUserId, 
                         content: message, 
                         timestamp: mysqlDatetime};
-            axios.post('http://localhost:8080/add-message', dataTodatabase)
+            axios.post(process.env.REACT_APP_API_ADDRESS+'/add-message', dataTodatabase)
             .then(response => {
                 console.log('消息已发送');
             })

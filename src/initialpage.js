@@ -13,6 +13,7 @@ import facebookloginbtn from './images-initialpage/facebookloginbtn.svg';
 
 // 跟後端有關
 import axios from 'axios';
+const cors = require('cors');
 
 const InitialPage = (handleCurrentPageChange) => {
     const navigate = useNavigate();
@@ -39,8 +40,9 @@ const InitialPage = (handleCurrentPageChange) => {
     const handleLogin = () => {
         console.log("email:"+email)
         console.log("password:"+password)
+        console.log("process.env.REACT_APP_API_ADDRESS.REACT_APP_API_ADDRESS:"+process.env.REACT_APP_API_ADDRESS)
         // 發送請求到後端
-        axios.post('http://localhost:8080/checkLogin', { email, password })
+        axios.post(process.env.REACT_APP_API_ADDRESS+"/checkLogin", { email, password }, {mode:'cors', credentials: 'include'})
           .then(response => {
             // 從後端收到回應後的處理
             if (response.data.success) {

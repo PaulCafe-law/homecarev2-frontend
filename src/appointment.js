@@ -42,7 +42,7 @@ const Appointment = (handleCurrentPageChange) => {
     const [bio,setBio] = useState('bio words');
     useEffect(() => {
         // 使用 Axios 透過professional_id向後端取得職業
-        axios.get(`http://localhost:8080/professional-backend-spec/${professional_id}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/professional-backend-spec/${professional_id}`)
             .then(response => {
             // 從回應中取得spec並設定到狀態中
             setName(response.data[0].full_name); 

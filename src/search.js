@@ -22,7 +22,7 @@ const Search = (handleCurrentPageChange) =>{
     const [medicalProfessionals, setMedicalProfessionals] = useState([]);
     useEffect(() => {
         // 發送GET請求
-        axios.get('http://localhost:8080/medical-professionals')
+        axios.get(process.env.REACT_APP_API_ADDRESS+'/medical-professionals')
         .then(response => {
             // 從回應中獲取醫療專業人員資訊並設定到狀態中
             // for(var i =0; i<response.data.length; i++){

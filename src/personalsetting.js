@@ -34,7 +34,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
             setButtonTextofname(newValue);
             sessionStorage.setItem('name', newValue);
             // 发送 POST 请求来更新数据库中的用户名
-            axios.post(`http://localhost:8080/update-username/${user_id}`, {
+            axios.post(process.env.REACT_APP_API_ADDRESS+`/update-username/${user_id}`, {
                 newUsername: newValue,
             })
                 .then((response) => {
@@ -48,7 +48,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
     };
     
     // 发送 GET 请求
-    axios.get(`http://localhost:8080/get-user-info/${user_id}`)
+    axios.get(process.env.REACT_APP_API_ADDRESS+`/get-user-info/${user_id}`)
     .then((response) => {
         // 处理从服务器返回的用户信息数据，例如将其存储在状态中以在界面上显示
         const userInfo = response.data;
@@ -72,7 +72,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
         if (newValue !== null) {
             setButtonTextofbirth(newValue);
             // 发送 POST 请求来更新数据库中的生日
-            axios.post(`http://localhost:8080/update-user-birthday/${user_id}`, {
+            axios.post(process.env.REACT_APP_API_ADDRESS+`/update-user-birthday/${user_id}`, {
                 newBirthday: newValue,
             })
                 .then((response) => {
@@ -91,7 +91,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
         if (newValue !== null) {
             setButtonTextofphone(newValue);
             // 发送 POST 请求来更新数据库中的生日
-            axios.post(`http://localhost:8080/update-user-phone/${user_id}`, {
+            axios.post(process.env.REACT_APP_API_ADDRESS+`/update-user-phone/${user_id}`, {
                 newPhonenumber: newValue,
             })
                 .then((response) => {
@@ -110,7 +110,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
         if (newValue !== null) {
             setButtonTextofemail(newValue);
             // 发送 POST 请求来更新数据库中的生日
-            axios.post(`http://localhost:8080/update-user-email/${user_id}`, {
+            axios.post(process.env.REACT_APP_API_ADDRESS+`/update-user-email/${user_id}`, {
                 newEmail: newValue,
             })
                 .then((response) => {
@@ -130,7 +130,7 @@ const PersonalSetting = (handleCurrentPageChange) => {
         if (newValue !== null) {
             setButtonTextofaddress(newValue);
             // 发送 POST 请求来更新数据库中的住址
-            axios.post(`http://localhost:8080/update-user-address/${user_id}`, {
+            axios.post(process.env.REACT_APP_API_ADDRESS+`/update-user-address/${user_id}`, {
                 newAddress: newValue,
             })
                 .then((response) => {

@@ -44,7 +44,7 @@ const AppointCalendar = (handleCurrentPageChange) =>{
         console.log("formattedDate:"+formattedDate)
         // setSelectedDate(date);
         // 將選擇的日期傳送到後端
-        axios.get(`http://localhost:8080/get-service-hours/${professionalId}/${serviceName}`, {
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-service-hours/${professionalId}/${serviceName}`, {
             params: {
                 date: formattedDate // 格式化日期為符合後端的格式
             }
@@ -85,7 +85,7 @@ const AppointCalendar = (handleCurrentPageChange) =>{
     };  
 
     const fetchPrice = () =>{
-        axios.get(`http://localhost:8080/get-service-price/${professionalId}/${serviceName}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-service-price/${professionalId}/${serviceName}`)
         .then(response => {
             setPrice(response.data[0].base_price);
         })

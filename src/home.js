@@ -28,7 +28,7 @@ const HomePage = (handleCurrentPageChange) => {
     const [gender, setGender] = useState('Gender');
     useEffect(() => {
         // 使用 Axios 透過email向後端取得名字
-        axios.get(`http://localhost:8080/user-backend-name/${email}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/user-backend-name/${email}`)
           .then(response => {
             // 從回應中取得名字並設定到狀態中
             setName(response.data[0].username); // 假設回應是一個包含 username 的陣列
@@ -46,7 +46,7 @@ const HomePage = (handleCurrentPageChange) => {
     
     useEffect(() => {
         // 使用 Axios 向後端取得gender
-        axios.get(`http://localhost:8080/user-gender/${email}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/user-gender/${email}`)
           .then(response => {
             // 從回應中取得名字並設定到狀態中
             console.log("response.data[0].gender:"+response.data[0].gender)
@@ -92,7 +92,7 @@ const HomePage = (handleCurrentPageChange) => {
       
     useEffect(() => {
         // 從後端取得最近的預約資料
-        axios.get(`http://localhost:8080/get-nearest-appointment/${user_id}/${formattedDate}/${present_time}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-nearest-appointment/${user_id}/${formattedDate}/${present_time}`)
         .then(response => {
             // setAppointmentData(response.data);
             // console.log("response.data:"+response.data)

@@ -36,7 +36,7 @@ const Meddetail = (handleCurrentPageChange) => {
 
     useEffect(() => {
     // 使用 Axios 透過professional_id向後端取得職業
-    axios.get(`http://localhost:8080/professional-backend-spec/${professional_id}`)
+    axios.get(process.env.REACT_APP_API_ADDRESS+`/professional-backend-spec/${professional_id}`)
         .then(response => {
         // 從回應中取得spec並設定到狀態中
         setName(response.data[0].full_name); 
@@ -54,7 +54,7 @@ const Meddetail = (handleCurrentPageChange) => {
 
     useEffect(() => {
         // 在這裡呼叫 API，並根據返回的數據更新 options 狀態
-        axios.get(`http://localhost:8080/get-professional-servicename/${professional_id}`) // 替換為實際的 API 端點
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-professional-servicename/${professional_id}`) // 替換為實際的 API 端點
           .then(response => {
             // 在上述代碼中，response.data 是從 API 返回的數據陣列，
             // 而 serviceNames 則是根據每個數據元素的 service_name 屬性創建的新陣列。

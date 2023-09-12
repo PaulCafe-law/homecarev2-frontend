@@ -40,11 +40,11 @@ const Profile = (handleCurrentPageChange) => {
     const navigate = useNavigate();
     const handleMedLinkClick = async () => {
         try {
-          const responseOfRole = await axios.get(`http://localhost:8080/checkUserRole/${name}`); // 替換成實際的後端路由
+          const responseOfRole = await axios.get(process.env.REACT_APP_API_ADDRESS+`/checkUserRole/${name}`); // 替換成實際的後端路由
           const userRole = responseOfRole.data[0].role; // 假設後端回傳的資料中有 role 屬性
       
           if (userRole === 'med') {
-            const responseOfProId = await axios.get(`http://localhost:8080/get-users-professionalId/${user_id}`); // 替換成實際的後端路由
+            const responseOfProId = await axios.get(process.env.REACT_APP_API_ADDRESS+`/get-users-professionalId/${user_id}`); // 替換成實際的後端路由
             const professional_id = responseOfProId.data[0].professional_id; // 假設後端回傳的資料中有 role 屬性
             sessionStorage.setItem('professional_id',professional_id)
             navigate(`/homepagemed`); // 如果使用者的 role 是 med，則導航到 homepagemed

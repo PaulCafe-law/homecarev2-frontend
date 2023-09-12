@@ -29,7 +29,7 @@ const ScheduleMed = (handleCurrentPageChange) => {
     const [appointmentData, setAppointmentData] = useState([]);
     useEffect(() => {
         // 從後端取得預約資料
-        axios.get(`http://localhost:8080/get-schedule-appointments-med/${professional_id}/${formattedDate}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-schedule-appointments-med/${professional_id}/${formattedDate}`)
         .then(response => {
             setAppointmentData(response.data);
             // console.log("response.data:"+response.data)

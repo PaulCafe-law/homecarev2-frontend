@@ -28,7 +28,7 @@ const Schedule = (handleCurrentPageChange) => {
 
     useEffect(() => {
         // 從後端取得預約資料
-        axios.get(`http://localhost:8080/get-appointments/${user_id}/${formattedDate}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-appointments/${user_id}/${formattedDate}`)
         .then(response => {
             setAppointmentData(response.data);
             // console.log("response.data:"+response.data)

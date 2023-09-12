@@ -48,7 +48,7 @@ const SignUp = (handleCurrentPageChange) => {
           role: role,
         };
     
-        axios.post('http://localhost:8080/addUser', data)
+        axios.post(process.env.REACT_APP_API_ADDRESS+'/addUser', data)
           .then(response => {
             if (response.data.success) {
               console.log('新增使用者成功');

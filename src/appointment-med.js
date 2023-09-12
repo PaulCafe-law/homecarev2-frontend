@@ -30,7 +30,7 @@ const AppointmentMed = (handleCurrentPageChange) => {
     const [appointmentVisibility, setAppointmentVisibility] = useState([]); //跟預約項目使否顯示有關
     useEffect(() => {
         // 從後端取得預約資料
-        axios.get(`http://localhost:8080/get-appointments-med/${professional_id}/${formattedDate}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-appointments-med/${professional_id}/${formattedDate}`)
         .then(response => {
             setAppointmentData(response.data);
             // console.log("response.data:"+response.data)
@@ -57,7 +57,7 @@ const AppointmentMed = (handleCurrentPageChange) => {
         // 更新後端狀態
         console.log("appointmentId:"+appointmentId)
         try {
-          const response = await axios.post('http://localhost:8080/update-appointment-status', {
+          const response = await axios.post(process.env.REACT_APP_API_ADDRESS+'/update-appointment-status', {
             appointment_id: appointmentId,
             new_status: '已拒絕'
           });
@@ -74,7 +74,7 @@ const AppointmentMed = (handleCurrentPageChange) => {
     const handleAcceptClick = async (appointmentId) => {
         console.log("appointmentId:"+appointmentId)
         try {
-          const response = await axios.post('http://localhost:8080/update-appointment-status', {
+          const response = await axios.post(process.env.REACT_APP_API_ADDRESS+'/update-appointment-status', {
             appointment_id: appointmentId,
             new_status: '已確認'
           });

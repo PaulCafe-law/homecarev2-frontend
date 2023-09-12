@@ -33,7 +33,7 @@ const HomePageMed = (handleCurrentPageChange) => {
     const professionalId = sessionStorage.getItem('professional_id')
     useEffect(() => {
         // 使用 Axios 向後端取得職業
-        axios.get(`http://localhost:8080/user-specialization/${name}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/user-specialization/${name}`)
           .then(response => {
             // 從回應中取得職業並設定到狀態中
             setSpecialization(response.data[0].specialization); // 假設回應是一個包含 username 的陣列
@@ -84,7 +84,7 @@ const HomePageMed = (handleCurrentPageChange) => {
     useEffect(() => {
         console.log("professionalId:"+professionalId);
         // 從後端取得最近的預約資料
-        axios.get(`http://localhost:8080/get-nearest-appointment-med/${professionalId}/${formattedDate}/${present_time}`)
+        axios.get(process.env.REACT_APP_API_ADDRESS+`/get-nearest-appointment-med/${professionalId}/${formattedDate}/${present_time}`)
         .then(response => {
             // setAppointmentData(response.data);
             console.log("response.data.username:"+response.data.username)
